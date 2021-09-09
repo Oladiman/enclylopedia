@@ -1,0 +1,83 @@
+.overlayContainer {
+  background: linear-gradient(
+    109.92deg,
+    rgba(255, 255, 255, 0.69) -1.53%,
+    rgba(255, 255, 255, 0) 100.91%
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  padding: 61px 50px 74px 50px;
+  height: fit-content;
+}
+
+.termLink{
+  color: #ffffff !important;
+}
+.termLink:active{
+  color: blue;
+}
+
+
+.overlayTitle {
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  text-transform: capitalize;
+
+  color: #ffffff;
+}
+
+.overlayTitleContainer {
+  margin-bottom: 63px;
+}
+
+.frequentHeader {
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.225em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.frequentActionBtn {
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: 0.025em;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.frequentHeaderContainer {
+  margin-bottom: 41px;
+}
+
+.forwardArrow{
+  margin-right: 41px;
+}
+.frequentBodyContainer{
+  margin-left: 13% !important;
+}
+
+.eachSearchTerm{
+  font-family: Lexend;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+
+text-transform: capitalize;
+
+color: #FFFFFF;
+}

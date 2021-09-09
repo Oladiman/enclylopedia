@@ -1,0 +1,6 @@
+#landingRoot{
+    background: url("../svgs/mainBackgound.svg");
+    height: 100vh;
+    padding-left:50px;
+    padding-right: 50px;
+}

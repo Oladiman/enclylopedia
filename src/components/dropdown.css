@@ -1,0 +1,26 @@
+.headerRoot{
+    margin-bottom: 70px;
+}
+
+.drpdwnButton {
+  background: #ffffff;
+  border-radius: 6px;
+  padding-left: 17px;
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: capitalize;
+  color: #c2c2c2;
+}
+.drpdownLang {
+    color: black;
+    padding-right: 15px;
+    padding-left: 5px;
+}
+
+
+.headerDropdown {
+
+}

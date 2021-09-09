@@ -1,0 +1,40 @@
+.landingFooter {
+  justify-content: center;
+  display: flex;
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.035em;
+  text-transform: capitalize;
+  color: #ffffff;
+  margin-top: 70px;
+}
+
+
+.darkFooter{
+  background: #000000;
+  padding: 100px 44px;
+  /* position: relative; */
+  /* width: 100vw; */
+  /* bottom: 0; */
+}
+
+.footerLogoContainer{
+
+}
+
+.madeByText{
+font-family: Lexend;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+text-align: right;
+letter-spacing: 0.035em;
+text-transform: capitalize;
+color: #FFFFFF;
+}
+
