@@ -59,7 +59,7 @@ const SectionWithVideo = ({ first, Content }) => {
       >
         {Content}
       </div>
-      <VideoRenderer />
+      <VideoRenderer src={"https://www.youtube.com/embed/CWnk6PTsZNo"}/>
     </>
   );
 };
@@ -68,13 +68,14 @@ const SectionDivider = () => {
   return <hr className="sectionDivider" />;
 };
 
-const VideoRenderer = ({ src, format }) => {
+const VideoRenderer = ({ src }) => {
   // const { src, type } = videoMeta;
   return (
     <div className="videoContentContainer">
-      <video controls className="videoContent">
-        <source src={src} type={`video/${format}`} />
-      </video>
+      {/* <video controls className="videoContent" src={src} /> */}
+        {/* <source src={src}  />type={`video/${format}` */}
+        {/* width="1076" height="605" */}
+        <iframe className="videoContent" src={src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   );
 };
