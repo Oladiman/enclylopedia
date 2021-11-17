@@ -10,13 +10,13 @@
   height: fit-content;
 }
 
-.termLink{
+.termLink {
   color: #ffffff !important;
+  max-height: 35px;
 }
-.termLink:active{
+.termLink:active {
   color: blue;
 }
-
 
 .overlayTitle {
   font-family: Lexend;
@@ -58,26 +58,37 @@
   cursor: pointer;
 }
 
-.frequentHeaderContainer {
-  margin-bottom: 41px;
+.frequentlySearchedContainer {
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
-.forwardArrow{
+.frequentHeaderContainer {
+  margin-bottom: 10px;
+}
+
+.forwardArrow {
   margin-right: 41px;
 }
-.frequentBodyContainer{
+.frequentBodyContainer {
   margin-left: 13% !important;
 }
 
-.eachSearchTerm{
+.eachSearchTerm {
   font-family: Lexend;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 30px;
-/* identical to box height */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  /* identical to box height */
 
-text-transform: capitalize;
+  text-transform: capitalize;
 
-color: #FFFFFF;
+  color: #ffffff;
+  margin: 1.5rem auto;
+}
+
+.oddSearchTerm {
+  justify-content: flex-start;
+  padding-left: 5 rem;
 }

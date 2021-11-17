@@ -5,7 +5,6 @@ import { ArrowForward } from "./svgs";
 import CustomSearch from "./CustomSearch";
 import { Link } from "react-router-dom";
 
-
 export default function Overlay() {
   return (
     <div className="overlayContainer">
@@ -26,19 +25,15 @@ const OverHeader = () => {
   );
 };
 
-
-
 const FrequentlySearched = () => {
   return (
-    <>
-    <Row className="frequentHeaderContainer" justify="space-around">
-      <Col className="frequentHeader">MOST SEARCHED KEYWORDS</Col>
-      <Col className="frequentActionBtn" span={4}>
-        see more
-      </Col>
-    </Row>
-    <FrequentlySearchedBody />
-    </>
+    <div className="frequentlySearchedContainer">
+      <Row className="frequentHeaderContainer" justify="space-between">
+        <Col className="frequentHeader">MOST SEARCHED KEYWORDS</Col>
+        <Col className="frequentActionBtn">see more</Col>
+      </Row>
+      <FrequentlySearchedBody />
+    </div>
   );
 };
 
@@ -63,16 +58,27 @@ const SampleSearch = [
     id: 4,
     searchTerm: "Test",
   },
+  {
+    id: 4,
+    searchTerm: "Another Test",
+  },
 ];
 
 const FrequentlySearchedBody = () => {
   return (
-    <Row  gutter={[48, 32]}  className="frequentBodyContainer">
-      {SampleSearch.map((term) => (
-        <Col span={12} key={term.id} className="eachSearchTerm">
+    <Row>
+      {/*gutter={[48, 32]} className="frequentBodyContainer" */}
+      {SampleSearch.map((term, index) => (
+        <Col
+          span={12}
+          key={term.id}
+          className={`eachSearchTerm ${
+            index % 2 !== 0 ? "oddSearchTerm" : "evenSearchTerm"
+          }`}
+        >
           <Link to={`/${term.searchTerm}/details`} className="termLink">
-          <ArrowForward className="forwardArrow" />
-          {term.searchTerm}
+            <ArrowForward className="forwardArrow" />
+            {term.searchTerm}
           </Link>
         </Col>
       ))}
