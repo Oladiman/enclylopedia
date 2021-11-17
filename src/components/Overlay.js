@@ -67,10 +67,10 @@ const SampleSearch = [
 
 const FrequentlySearchedBody = () => {
   return (
-    <Row  gutter={[48, 32]} justify="space-between" className="frequentBodyContainer">
+    <Row  gutter={[48, 32]}  className="frequentBodyContainer">
       {SampleSearch.map((term) => (
         <Col span={12} key={term.id} className="eachSearchTerm">
-          <Link to="/details" className="termLink">
+          <Link to={`/${term.searchTerm}/details`} className="termLink">
           <ArrowForward className="forwardArrow" />
           {term.searchTerm}
           </Link>
