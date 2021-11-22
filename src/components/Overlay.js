@@ -42,7 +42,7 @@ const FrequentlySearched = () => {
 const SampleSearch = [
   {
     id: 0,
-    searchTerm: "African Mammal",
+    searchTerm: "Gorilla",
   },
   {
     id: 1,
@@ -58,11 +58,11 @@ const SampleSearch = [
   },
   {
     id: 4,
-    searchTerm: "Test",
+    searchTerm: "Snake",
   },
   {
     id: 5,
-    searchTerm: "Another Test",
+    searchTerm: "Cow",
   },
 ];
 
