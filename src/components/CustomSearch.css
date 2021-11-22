@@ -1,14 +1,20 @@
 .overlaySearchButtonContainer {
   background: linear-gradient(
     109.92deg,
-    rgba(255, 255, 255, 0.69) -1.53%,
-    rgba(236, 169, 169, 0) 100.91%
+    rgb(0 0 0 / 25%) -1.53%,
+    rgb(0 0 0 / 25%) 100.91%
   );
   backdrop-filter: blur(20px);
   border-radius: 15px;
   height: 48px;
   padding: 15px 17px;
 }
+
+/* 
+linear-gradient(
+    109.92deg,
+    rgba(255, 255, 255, 0.69) -1.53%,
+    rgba(236, 169, 169, 0) 100.91% */
 
 .btnSearch::placeholder {
   font-family: Lexend;
@@ -18,16 +24,16 @@
   line-height: 17px;
   text-transform: capitalize;
   color: rgba(255, 255, 255, 0.897);
-  
 }
 
-input.btnSearch ,input::selection{
-    border: 0px none;
-    margin-right: 5px;
-    background-color: transparent;
+input.btnSearch,
+input::selection {
+  border: 0px none;
+  margin-right: 5px;
+  background-color: transparent;
 }
 
 .overlaySearchButtonContainer input {
-  outline:none;
+  outline: none;
   color: #fff;
 }

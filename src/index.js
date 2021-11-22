@@ -1,12 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import 'antd/dist/antd.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import "./index.css";
+import "antd/dist/antd.css";
+import App from "./App";
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+  <QueryClientProvider client={queryClient}>
+    <App />
+    <ReactQueryDevtools initialIsOpen={false} />
+  </QueryClientProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

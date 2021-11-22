@@ -2,45 +2,59 @@ import React, { useState } from "react";
 import { Col, Row, Image } from "antd";
 import "./DetailsContent.css";
 import { SpeakerIcon } from "./svgs";
-import Repitle from "../components/images/reptile.png";
-import Snail from "../components/images/image2.png";
-import Hill from "../components/images/image3.png";
-import { firstContent, SecondContent } from "./content";
+// import Repitle from "../components/images/reptile.png";
+// import Snail from "../components/images/image2.png";
+// import Hill from "../components/images/image3.png";
+// import {  SecondContent } from "./content";
+import useAudio from "../hooks/useAudio";
 
-export default function DetailsContent() {
+export default function DetailsContent({ data }) {
+  // const { small } = data?.imagedata?.results[0].urls.small;
   return (
     <div className="DetailsContentRoot">
       <SectionHeader
-        title={"Fauna of Africa"}
+        title={data?.word}
+        phoneticText={data?.phonetic}
+        audioUrl={data?.phonetics[0].audio}
         dateStamp={"25th, Aug 2020"}
         first={true}
       />
-      <SectionWithVideo first={true} Content={firstContent} />
-
-      <SectionHeader title={"Origins and history of African fauna"} />
-      <SectionWithImage
-        showImageFirst={true}
-        imageUrl={Repitle}
-        image2Url={Snail}
-        image3Url={Hill}
-        Content={SecondContent}
+      <SectionWithVideo
+        first={true}
+        Content={data?.meanings[0]?.definitions[0].definition}
+        phoneticText={data?.phonetic}
+        videoUrl={data?.youtubelink}
       />
 
-      <SectionHeader title={"Invertebrates"} />
-      <SectionWithImage showImageFirst={false} Content={SecondContent} />
+      <SectionHeader title={`More about ${data?.word}`} />
+      <SectionWithImage
+        showImageFirst={true}
+        imageUrl={data?.imagedata?.results[0].urls.small}
+        // image2Url={Snail}
+        // image3Url={Hill}
+        Content={data?.origin}
+      />
+
+      {/* <SectionHeader title={"Invertebrates"} /> */}
+      {/* <SectionWithImage showImageFirst={false} Content={SecondContent} /> */}
     </div>
   );
 }
 
-const SectionHeader = ({ title, dateStamp }) => {
+const SectionHeader = ({ title, dateStamp, phoneticText, audioUrl }) => {
+  const [, toggle] = useAudio(audioUrl);
   return (
     <>
       <Row className="sectionHeader" justify="space-between">
         <Col>
-          <span className="titleText">{title} </span>
-          <button className="iconBackground">
-            <SpeakerIcon />
-          </button>
+          <span className="titleText">
+            {title} {phoneticText && `(${phoneticText})`}{" "}
+          </span>
+          {audioUrl && (
+            <button className="iconBackground" onClick={toggle}>
+              <SpeakerIcon />
+            </button>
+          )}
         </Col>
 
         {dateStamp && <Col className="updatedDate">Updated:{dateStamp}</Col>}
@@ -50,8 +64,9 @@ const SectionHeader = ({ title, dateStamp }) => {
   );
 };
 
-const SectionWithVideo = ({ first, Content }) => {
+const SectionWithVideo = ({ first, Content, videoUrl }) => {
   const isFirst = first ? "firstSection" : "otherSection";
+  console.log(videoUrl);
   return (
     <>
       <div
@@ -59,7 +74,9 @@ const SectionWithVideo = ({ first, Content }) => {
       >
         {Content}
       </div>
-      <VideoRenderer src={"https://www.youtube.com/embed/CWnk6PTsZNo"}/>
+      <VideoRenderer
+        src={videoUrl || "https://www.youtube.com/embed/CWnk6PTsZNo"}
+      />
     </>
   );
 };
@@ -69,13 +86,16 @@ const SectionDivider = () => {
 };
 
 const VideoRenderer = ({ src }) => {
-  // const { src, type } = videoMeta;
   return (
     <div className="videoContentContainer">
-      {/* <video controls className="videoContent" src={src} /> */}
-        {/* <source src={src}  />type={`video/${format}` */}
-        {/* width="1076" height="605" */}
-        <iframe className="videoContent" src={src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe
+        className="videoContent"
+        src={src}
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   );
 };
@@ -102,7 +122,8 @@ const SectionWithImage = ({
             <Image
               preview={{ visible: false }}
               width={400}
-              src={imageUrl || Repitle}
+              height={433}
+              src={imageUrl}
               onClick={() => setVisible(true)}
             />
             <div style={{ display: "none" }}>
@@ -110,8 +131,8 @@ const SectionWithImage = ({
                 preview={{ visible, onVisibleChange: (vis) => setVisible(vis) }}
               >
                 <Image src={imageUrl} />
-                <Image src={image2Url} />
-                <Image src={image3Url} />
+                {/* <Image src={image2Url} />
+                <Image src={image3Url} /> */}
               </Image.PreviewGroup>
             </div>
           </div>
@@ -130,7 +151,7 @@ const SectionWithImage = ({
             <Image
               preview={{ visible: false }}
               width={400}
-              src={imageUrl || Repitle}
+              src={imageUrl}
               onClick={() => setVisible(true)}
             />
             <div style={{ display: "none" }}>

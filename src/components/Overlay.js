@@ -1,25 +1,27 @@
 import React from "react";
 import "./Overlay.css";
-import { Row, Col } from "antd";
+import { Row, Col, Form } from "antd";
 import { ArrowForward } from "./svgs";
 import CustomSearch from "./CustomSearch";
 import { Link } from "react-router-dom";
 
-export default function Overlay() {
+export default function Overlay({ setSearchTerm, searchTerm }) {
   return (
     <div className="overlayContainer">
-      <OverHeader />
+      <OverHeader setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <FrequentlySearched />
     </div>
   );
 }
 
-const OverHeader = () => {
+const OverHeader = ({ setSearchTerm, searchTerm }) => {
   return (
     <Row className="overlayTitleContainer" justify="space-between">
       <Col className="overlayTitle">What do you want to Learn Today?</Col>
       <Col className="overSearch">
-        <CustomSearch />
+        <Form>
+          <CustomSearch setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+        </Form>
       </Col>
     </Row>
   );
@@ -59,7 +61,7 @@ const SampleSearch = [
     searchTerm: "Test",
   },
   {
-    id: 4,
+    id: 5,
     searchTerm: "Another Test",
   },
 ];
