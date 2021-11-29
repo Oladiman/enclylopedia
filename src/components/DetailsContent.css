@@ -111,9 +111,9 @@ video {
   max-height: 450px;
 }
 
-.descriptionContainer {
-  /* justify-content: flex-end; */
-}
+/* .descriptionContainer {
+  justify-content: flex-end; 
+} */
 
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #000000;
