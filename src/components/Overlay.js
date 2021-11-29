@@ -5,21 +5,21 @@ import { ArrowForward } from "./svgs";
 import CustomSearch from "./CustomSearch";
 import { Link } from "react-router-dom";
 
-export default function Overlay() {
+export default function Overlay({ setLoading, setDetails }) {
   return (
     <div className="overlayContainer">
-      <OverHeader />
+      <OverHeader setLoading={setLoading} setDetails={setDetails} />
       <FrequentlySearched />
     </div>
   );
 }
 
-const OverHeader = () => {
+const OverHeader = ({ setLoading, setDetails }) => {
   return (
     <Row className="overlayTitleContainer" justify="space-between">
       <Col className="overlayTitle">What do you want to Learn Today?</Col>
       <Col className="overSearch">
-        <CustomSearch />
+        <CustomSearch setLoading={setLoading} setDetails={setDetails} />
       </Col>
     </Row>
   );
@@ -59,7 +59,7 @@ const SampleSearch = [
     searchTerm: "Test",
   },
   {
-    id: 4,
+    id: 5,
     searchTerm: "Another Test",
   },
 ];

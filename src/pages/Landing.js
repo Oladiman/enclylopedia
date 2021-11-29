@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from "react";
 import "./styles/landing.css";
 import Header from "../components/header";
-import Overlay from '../components/Overlay';
-import Footer from '../components/Footer';
+import Overlay from "../components/Overlay";
+import Footer from "../components/Footer";
 
-export default function Landing() {
-    return (
-        <div id="landingRoot">
-            <Header />
-            <Overlay />
-            <Footer />
-        </div>
-    )
+export default function Landing({ setDetails }) {
+  const [loading, setLoading] = useState(false);
+  return loading ? (
+    "Loading..."
+  ) : (
+    <>
+      <div id="landingRoot">
+        <Header />
+        <Overlay
+          loading={loading}
+          setLoading={setLoading}
+          setDetails={setDetails}
+        />
+        <Footer />
+      </div>
+    </>
+  );
 }

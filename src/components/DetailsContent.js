@@ -1,46 +1,112 @@
-import React, { useState } from "react";
-import { Col, Row, Image } from "antd";
+import React, { useState, useEffect } from "react";
+import { Col, Row, Image, Tabs } from "antd";
 import "./DetailsContent.css";
 import { SpeakerIcon } from "./svgs";
 import Repitle from "../components/images/reptile.png";
-import Snail from "../components/images/image2.png";
-import Hill from "../components/images/image3.png";
+// import Snail from "../components/images/image2.png";
+// import Hill from "../components/images/image3.png";
 import { firstContent, SecondContent } from "./content";
+import useAudio from "../hooks/useAudio";
 
-export default function DetailsContent() {
+export default function DetailsContent({ details }) {
+  const { word, phonetics, meanings, origin } = details && details;
+  const data = {
+    title: word,
+    audioUrl: phonetics[0]?.audio,
+    phoneticText: phonetics[0]?.text,
+    videoContent: meanings[0]?.definitions[0]?.definition,
+    imageContent: origin,
+    imageUrl: "",
+    videoUrl: "",
+  };
+  const { TabPane } = Tabs;
+  useEffect(() => {
+    console.log(details);
+  }, [details]);
   return (
-    <div className="DetailsContentRoot">
-      <SectionHeader
-        title={"Fauna of Africa"}
-        dateStamp={"25th, Aug 2020"}
-        first={true}
-      />
-      <SectionWithVideo first={true} Content={firstContent} />
+    <Tabs defaultActiveKey="1" centered>
+      {/* English */}
+      <TabPane tab="English" key="1">
+        <div className="DetailsContentRoot">
+          <SectionHeader
+            title={data.title}
+            dateStamp={"29th, Dec 2021"}
+            first={true}
+            audioUrl={data.audioUrl}
+            phoneticText={data.phoneticText}
+          />
+          <SectionWithVideo
+            first={true}
+            Content={data.videoContent}
+            videoUrl={data.videoUrl}
+          />
+          <SectionWithImage
+            showImageFirst={false}
+            Content={data.imageContent}
+          />
+        </div>
+      </TabPane>
 
-      <SectionHeader title={"Origins and history of African fauna"} />
-      <SectionWithImage
-        showImageFirst={true}
-        imageUrl={Repitle}
-        image2Url={Snail}
-        image3Url={Hill}
-        Content={SecondContent}
-      />
+      {/* yoruba */}
+      <TabPane tab="Yoruba" key="2">
+        <div className="DetailsContentRoot">
+          <SectionHeader
+            title={"Kiniun"}
+            dateStamp={"25th, Aug 2020"}
+            first={true}
+            audioUrl={"wdnwkdkwdn"}
+            // phoneticText={"ˈlʌɪən"}
+          />
+          <SectionWithVideo first={true} Content={firstContent} />
+          <SectionWithImage showImageFirst={false} Content={SecondContent} />
+        </div>
+      </TabPane>
 
-      <SectionHeader title={"Invertebrates"} />
-      <SectionWithImage showImageFirst={false} Content={SecondContent} />
-    </div>
+      {/* igbo */}
+      <TabPane tab="Igbo" key="3">
+        <div className="DetailsContentRoot">
+          <SectionHeader
+            title={"Fauna of Africa"}
+            dateStamp={"25th, Aug 2020"}
+            first={true}
+            audioUrl={"wdnwkdkwdn"}
+          />
+          <SectionWithVideo first={true} Content={firstContent} />
+          <SectionWithImage showImageFirst={false} Content={SecondContent} />
+        </div>
+      </TabPane>
+      {/* hausa */}
+      <TabPane tab="Hausa" key="4">
+        <div className="DetailsContentRoot">
+          <SectionHeader
+            title={"Fauna of Africa"}
+            dateStamp={"25th, Aug 2020"}
+            first={true}
+            audioUrl={"wdnwkdkwdn"}
+          />
+          <SectionWithVideo first={true} Content={firstContent} />
+          <SectionWithImage showImageFirst={false} Content={SecondContent} />
+        </div>
+      </TabPane>
+    </Tabs>
   );
 }
 
-const SectionHeader = ({ title, dateStamp }) => {
+const SectionHeader = ({ title, dateStamp, phoneticText, audioUrl }) => {
+  const [, toggle] = useAudio(audioUrl);
+
   return (
     <>
       <Row className="sectionHeader" justify="space-between">
         <Col>
-          <span className="titleText">{title} </span>
-          <button className="iconBackground">
-            <SpeakerIcon />
-          </button>
+          <span className="titleText">
+            {title} {phoneticText && `(${phoneticText})`}{" "}
+          </span>
+          {audioUrl && (
+            <button className="iconBackground" onClick={toggle}>
+              <SpeakerIcon />
+            </button>
+          )}
         </Col>
 
         {dateStamp && <Col className="updatedDate">Updated:{dateStamp}</Col>}
@@ -59,7 +125,7 @@ const SectionWithVideo = ({ first, Content }) => {
       >
         {Content}
       </div>
-      <VideoRenderer src={"https://www.youtube.com/embed/CWnk6PTsZNo"}/>
+      <VideoRenderer src={"https://www.youtube.com/embed/CWnk6PTsZNo"} />
     </>
   );
 };
@@ -73,9 +139,16 @@ const VideoRenderer = ({ src }) => {
   return (
     <div className="videoContentContainer">
       {/* <video controls className="videoContent" src={src} /> */}
-        {/* <source src={src}  />type={`video/${format}` */}
-        {/* width="1076" height="605" */}
-        <iframe className="videoContent" src={src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      {/* <source src={src}  />type={`video/${format}` */}
+      {/* width="1076" height="605" */}
+      <iframe
+        className="videoContent"
+        src={src}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };

@@ -11,15 +11,15 @@
 }
 
 /* iconBackground */
-.iconBackground{
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    justify-content: center;
-    padding-top: 4px;
-    padding-right: 5px;
-    border: none;
-    cursor: pointer;
+.iconBackground {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  justify-content: center;
+  padding-top: 4px;
+  padding-right: 5px;
+  border: none;
+  cursor: pointer;
 }
 /* end of iconBackground */
 
@@ -65,52 +65,63 @@
 }
 
 .sectionFlex {
-    display: flex;
+  display: flex;
 }
 
-.sectionPadding{
-    padding: 0px 100px 12px 102px;
-
+.sectionPadding {
+  padding: 0px 100px 12px 102px;
 }
 
-.firstSection{
-    margin-top: 43px;
+.firstSection {
+  margin-top: 43px;
 }
 
-.otherSection{
-    margin-top: 30px;
+.otherSection {
+  margin-top: 30px;
 }
-
 
 /* video */
 
-.videoContentContainer, video, iframe{
-    display: flex;
-    justify-content: center;
-
+.videoContentContainer,
+video,
+iframe {
+  display: flex;
+  justify-content: center;
 }
-.videoContent, video{
-    padding-top: 90px;
-    padding-bottom: 90px;
-    height: 738px;
-    width: 80vw;    
+.videoContent,
+video {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  height: 738px;
+  width: 80vw;
 }
 
 /* sectionWithImage */
 
-.detailsWithImage{
-    display: flex;
-    padding: 0px 100px 12px 102px;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 30px;
+.detailsWithImage {
+  display: flex;
+  padding: 0px 100px 12px 102px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
-.imageContainer{
-    /* justify-content: flex-start; */
-    max-height: 450px;
+.imageContainer {
+  /* justify-content: flex-start; */
+  max-height: 450px;
 }
 
-.descriptionContainer{
-    /* justify-content: flex-end; */
+.descriptionContainer {
+  /* justify-content: flex-end; */
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #000000;
+  text-shadow: 0 0 0.25px currentColor;
+  font-size: 1.5rem;
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: capitalize;
 }
